@@ -10,7 +10,7 @@ class Node{
     Next=NULL;
         }
      ~Node(){
-        cout<<"Destructer Call For "<<data<<endl;
+        
         if(Next!=NULL){
             delete Next;
             Next=NULL;
@@ -27,7 +27,7 @@ class List{
     }
     //For Delete Linked List
     ~List(){
-        cout<<"List destructor Counter"<<endl;
+     
         if(Head!=NULL){
             delete Head;
             Head = NULL;
@@ -65,6 +65,21 @@ class List{
         newNode->Next=temp->Next;
         temp->Next=newNode;
     }
+    void pop_front(){
+        Node* temp = Head;
+        Head=Head->Next;
+        temp->Next=NULL;
+        delete temp;
+    }
+    void pop_back(){
+        Node* temp = Head;
+        while(temp->Next->Next!=NULL){
+            temp=temp->Next;
+        }
+      temp->Next=NULL;
+      delete Tail;
+        Tail=temp;
+    }
     // Print LL
     void print(){
         Node* temp=Head;
@@ -88,7 +103,8 @@ int main(){
     ll.push_back(5);
     ll.push_back(6);
     ll.push_mid(1000,3);
-
+    ll.pop_front();
+    ll.pop_back();
     ll.print();
  
     return 0;
