@@ -56,6 +56,23 @@ int keyFind(int key){
         }
         return -1;
     }
+    int helper(Node* h,int key){
+        if(h==NULL){
+            return -1;
+        }
+        if(h->data==key){
+            return 0;
+        }
+
+        int index = helper(h->Next,key);
+        if(index==-1){
+            return -1;
+        }
+        return index + 1;
+    }
+    int searchRec(int key){
+        return helper(Head,key);
+    }
 };
 
 int main(){
@@ -67,5 +84,5 @@ int main(){
     ll.push_front(5);
     ll.push_front(6);
     ll.print();
-   cout<<ll.keyFind(2)<<endl;
+   cout<<ll.searchRec(2)<<endl;
 }
