@@ -191,21 +191,32 @@ public:
         return helper(Head, key);
     }
 
-// Thia is for reverse the linkesd list--->
+// ===============================
+    // Reverse the Linked List
+    // ===============================
+    void Reverse() {
+        Node* Curr = Head; // Current pointer starts at Head
+        Node* Prev = NULL; // Previous pointer initialized to NULL
 
- void Reverse(){
-    Node* Curr = Head;
-    Node* Prev = NULL;
-
-    while(Curr!=NULL){
-        Node* Next= Curr->next;
-        Curr->next=Prev;
-        Prev=Curr;
-        Curr=Next;        
+        while (Curr != NULL) {
+            Node* Next = Curr->next; // Store next node
+            Curr->next = Prev;       // Reverse the current node's pointer
+            Prev = Curr;             // Move Prev to current node
+            Curr = Next;             // Move Curr to next node
+        }
+        Head = Prev; // Update Head to the new first node
     }
-    Head=Prev;
- }
 
+    // ===============================
+    // Remove Nth Node from the End
+    // ===============================
+    void Removenth(int n) {
+        Node* Prev = Head;
+        for (int i = 1; i <= 7 - n; i++) { // Traverse to (Length - n)th node
+            Prev = Prev->next;
+        }
+        Prev->next = Prev->next->next; // Skip the nth node
+    }
 
 };
 
@@ -226,6 +237,7 @@ int main() {
     ll.popFront();
     ll.popBack();
     ll.Reverse();
+    ll.Removenth(6);
     ll.printLL();
     cout << "Position of 100: " << ll.SearchRec(100) << endl;
 
