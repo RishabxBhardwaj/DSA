@@ -190,6 +190,23 @@ public:
     int SearchRec(int key) {
         return helper(Head, key);
     }
+
+// Thia is for reverse the linkesd list--->
+
+ void Reverse(){
+    Node* Curr = Head;
+    Node* Prev = NULL;
+
+    while(Curr!=NULL){
+        Node* Next= Curr->next;
+        Curr->next=Prev;
+        Prev=Curr;
+        Curr=Next;        
+    }
+    Head=Prev;
+ }
+
+
 };
 
 // ===============================
