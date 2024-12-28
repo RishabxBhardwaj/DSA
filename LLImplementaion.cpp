@@ -225,7 +225,7 @@ int main() {
     ll.pushMid(100, 4);
     ll.popFront();
     ll.popBack();
-
+    ll.Reverse();
     ll.printLL();
     cout << "Position of 100: " << ll.SearchRec(100) << endl;
 
